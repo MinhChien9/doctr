@@ -101,11 +101,14 @@ VOCABS["multilingual"] = "".join(
 )
 VOCABS["custom-multilingual"] = "".join(
     dict.fromkeys(
-        vocab.get_vocab("chinese")
-        + vocab.get_vocab("korean")
-        + vocab.get_vocab("japanese")
+        vocab.get_vocab("english")
         + vocab.get_vocab("vietnamese")
-        + vocab.get_vocab("english")
+        + vocab.get_vocab("korean_hangul")
+        + vocab.get_vocab("korean_hanja")
+        + vocab.get_vocab("CJK-Symbols")
+        + vocab.get_vocab("Japanese-Complete")
+        + vocab.get_vocab("Chinese-Simplified")
+        + vocab.get_vocab("Chinese-Traditional")
         + "§"
     )
 )
