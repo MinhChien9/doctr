@@ -1,7 +1,9 @@
 # Text recognition
 
 The sample training script was made to train text recognition model with docTR.
-
+```shell
+python references/recognition/train_pytorch.py parseq --train_path /home/chien/Desktop/traffic-sign-images/train --val_path /home/chien/Desktop/traffic-sign-images/val --epochs 5 --pretrained --vocab custom-multilingual
+```
 ## Setup
 
 First, you need to install `doctr` (with pip, for instance)
