@@ -2,7 +2,7 @@
 
 The sample training script was made to train text recognition model with docTR.
 ```shell
-python references/recognition/train_pytorch.py parseq --train_path /home/chien/Desktop/13.pickup/train --val_path /home/chien/Desktop/13.pickup/val --epochs 50 --pretrained --vocab custom-multilingual --early-stop --wb -b 64
+python references/recognition/train_pytorch.py vitstr_small --train_path /home/chien/Desktop/13.pickup/train --val_path /home/chien/Desktop/13.pickup/val --epochs 50 --pretrained --vocab custom-multilingual --early-stop --wb -b 64 --workers 6
 ```
 ## Setup
 
