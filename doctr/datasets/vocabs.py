@@ -4,6 +4,7 @@
 # See LICENSE or go to <https://opensource.org/licenses/Apache-2.0> for full license details.
 
 import string
+from doctr.utils import vocab
 
 __all__ = ["VOCABS"]
 
@@ -33,7 +34,9 @@ VOCABS: dict[str, str] = {
 
 VOCABS["latin"] = VOCABS["digits"] + VOCABS["ascii_letters"] + VOCABS["punctuation"]
 VOCABS["english"] = VOCABS["latin"] + "°" + VOCABS["currency"]
-VOCABS["legacy_french"] = VOCABS["latin"] + "°" + "àâéèêëîïôùûçÀÂÉÈËÎÏÔÙÛÇ" + VOCABS["currency"]
+VOCABS["legacy_french"] = (
+    VOCABS["latin"] + "°" + "àâéèêëîïôùûçÀÂÉÈËÎÏÔÙÛÇ" + VOCABS["currency"]
+)
 VOCABS["french"] = VOCABS["english"] + "àâéèêëîïôùûüçÀÂÉÈÊËÎÏÔÙÛÜÇ"
 VOCABS["portuguese"] = VOCABS["english"] + "áàâãéêíïóôõúüçÁÀÂÃÉÊÍÏÓÔÕÚÜÇ"
 VOCABS["spanish"] = VOCABS["english"] + "áéíóúüñÁÉÍÓÚÜÑ" + "¡¿"
@@ -61,7 +64,9 @@ VOCABS["vietnamese"] = (
     + "ÁÀẢẠÃĂẮẰẲẴẶÂẤẦẨẪẬĐÉÈẺẼẸÊẾỀỂỄỆÓÒỎÕỌÔỐỒỔỘỖƠỚỜỞỢỠÚÙỦŨỤƯỨỪỬỮỰÍÌỈĨỊÝỲỶỸỴ"
 )
 VOCABS["hebrew"] = VOCABS["english"] + "אבגדהוזחטיכלמנסעפצקרשת" + "₪"
-VOCABS["hindi"] = VOCABS["hindi_letters"] + VOCABS["hindi_digits"] + VOCABS["hindi_punctuation"]
+VOCABS["hindi"] = (
+    VOCABS["hindi_letters"] + VOCABS["hindi_digits"] + VOCABS["hindi_punctuation"]
+)
 VOCABS["gujarati"] = (
     VOCABS["gujarati_vowels"]
     + VOCABS["gujarati_consonants"]
@@ -71,7 +76,11 @@ VOCABS["gujarati"] = (
 )
 VOCABS["bangla"] = VOCABS["bangla_letters"] + VOCABS["bangla_digits"]
 VOCABS["ukrainian"] = (
-    VOCABS["generic_cyrillic_letters"] + VOCABS["digits"] + VOCABS["punctuation"] + VOCABS["currency"] + "ґіїєҐІЇЄ₴"
+    VOCABS["generic_cyrillic_letters"]
+    + VOCABS["digits"]
+    + VOCABS["punctuation"]
+    + VOCABS["currency"]
+    + "ґіїєҐІЇЄ₴"
 )
 VOCABS["multilingual"] = "".join(
     dict.fromkeys(
@@ -87,6 +96,19 @@ VOCABS["multilingual"] = "".join(
         + VOCABS["danish"]
         + VOCABS["finnish"]
         + VOCABS["swedish"]
+        + "§"
+    )
+)
+VOCABS["custom-multilingual"] = "".join(
+    dict.fromkeys(
+        vocab.get_vocab("english")
+        + vocab.get_vocab("vietnamese")
+        + vocab.get_vocab("korean_hangul")
+        + vocab.get_vocab("korean_hanja")
+        + vocab.get_vocab("CJK-Symbols")
+        + vocab.get_vocab("Japanese-Complete")
+        + vocab.get_vocab("Chinese-Simplified")
+        + vocab.get_vocab("Chinese-Traditional")
         + "§"
     )
 )
