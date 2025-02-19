@@ -1,8 +1,17 @@
 # Text recognition
 
 The sample training script was made to train text recognition model with docTR.
+## Training 
 ```shell
 python references/recognition/train_pytorch.py vitstr_small --train_path /home/chien/Desktop/13.pickup/train --val_path /home/chien/Desktop/13.pickup/val --epochs 50 --pretrained --vocab custom-multilingual --early-stop --wb -b 64 --workers 6
+```
+## Evaluate 
+```shell
+python references/recognition/evaluate_pytorch.py vitstr_small --resume "C:/Users/chien/OneDrive/01.Dữ liệu/08.Working/08.PTS-Digital/02.Tài khoản và môi trường/models/vittr/vitstr_small_20250218-211935_epoch_2.pt" --workers 8 --batch_size 32 --dataset CORD --vocab custom-multilingual
+```
+```shell korean
+python references/recognition/train_pytorch.py vitstr_small --val_path "D:/01.Data/03.Dataset/02.Recognition/02.Korean/traffic-sign-images/val"  --vocab custom-multilingual -b 32 --workers 8 --test-only --pretrained
+python references/recognition/train_pytorch.py vitstr_small --train_path "D:/01.Data/03.Dataset/02.Recognition/02.Korean/traffic-sign-images/val"  --val_path "D:/01.Data/03.Dataset/02.Recognition/02.Korean/traffic-sign-images/val"  --resume "C:/Users/chien/OneDrive/01.Dữ liệu/08.Working/08.PTS-Digital/02.Tài khoản và môi trường/models/vittr/vitstr_small_20250218-211935_epoch_2.pt" --vocab custom-multilingual -b 32 --workers 8 --test-only
 ```
 ## Setup
 
